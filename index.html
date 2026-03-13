@@ -1,86 +1,993 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma'mon Alsa'oudi - Professional CV</title>
-    <style>
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; background: #f4f4f4; padding: 20px; }
-        .cv-container { max-width: 850px; margin: auto; background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
-        .header { text-align: center; border-bottom: 2px solid #2c3e50; padding-bottom: 20px; }
-        h1 { color: #2c3e50; margin-bottom: 5px; }
-        .contact-info { font-size: 0.9em; color: #555; }
-        h2 { color: #2980b9; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 25px; }
-        .job-entry { margin-bottom: 15px; }
-        .job-header { display: flex; justify-content: space-between; font-weight: bold; }
-        .date-span { color: #7f8c8d; font-size: 0.9em; font-weight: normal; }
-        .title-span { color: #2c3e50; display: block; margin-top: 2px; }
-        .skills-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .qr-area { text-align: center; margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 10px; }
-        .qr-code { width: 150px; height: 150px; margin-top: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma'mon Al-Sa'oudi | Histopathology Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f5f0e8;
+    --cream: #ede8dd;
+    --rust: #8b3a2a;
+    --gold: #b5892a;
+    --sage: #4a5e4e;
+    --muted: #7a7060;
+    --line: rgba(13,13,13,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* LANG SYSTEM */
+  [data-lang="ar"] { display: none; }
+  html[lang="ar"] [data-lang="ar"] { display: block; }
+  html[lang="ar"] [data-lang="en"] { display: none; }
+  [data-inline="ar"] { display: none; }
+  html[lang="ar"] [data-inline="ar"] { display: inline; }
+  html[lang="ar"] [data-inline="en"] { display: none; }
+
+  .lang-btn {
+    padding: 0.45rem 1.1rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    transition: all 0.25s;
+    flex-shrink: 0;
+  }
+  .lang-btn:hover { background: var(--ink); color: var(--paper); }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    backdrop-filter: blur(12px);
+    background: rgba(245,240,232,0.88);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--rust);
+    white-space: nowrap;
+  }
+
+  .nav-center { display: flex; gap: 2rem; list-style: none; }
+
+  .nav-center a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-center a:hover { color: var(--rust); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 6rem;
+    z-index: 2;
+  }
+  html[lang="ar"] .hero-left { padding: 8rem 6rem 4rem 4rem; }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-name em { font-style: italic; color: var(--rust); }
+
+  .hero-title {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--sage);
+    margin-top: 1.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-divider {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 440px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 0.85rem 2rem;
+    background: var(--rust);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--ink); }
+
+  .btn-outline {
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  /* HERO RIGHT */
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-visual { position: relative; width: 380px; height: 480px; }
+
+  .hero-rect-1 {
+    position: absolute; inset: 0;
+    border: 1px solid var(--line);
+    transform: rotate(3deg);
+    background: var(--cream);
+  }
+  .hero-rect-2 {
+    position: absolute; inset: 20px;
+    border: 1px solid var(--gold);
+    opacity: 0.4;
+  }
+
+  .hero-microscope {
+    position: absolute; inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .hero-micro-icon { font-size: 5rem; opacity: 0.15; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px; width: 100%;
+    background: var(--line);
+  }
+
+  .stat-item { background: var(--cream); padding: 1.2rem; text-align: center; }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--rust);
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem; position: relative; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--rust);
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .section-line { flex: 1; height: 1px; background: var(--line); }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+  }
+
+  .detail-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-row:last-child { border-bottom: none; }
+
+  .detail-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    padding: 1rem 1.2rem;
+    background: rgba(0,0,0,0.02);
+    border-right: 1px solid var(--line);
+  }
+  html[lang="ar"] .detail-key { border-right: none; border-left: 1px solid var(--line); }
+
+  .detail-val {
+    font-size: 0.9rem;
+    color: var(--ink);
+    padding: 1rem 1.2rem;
+    line-height: 1.5;
+  }
+
+  /* EXPERTISE */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .exp-card {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .exp-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--rust);
+    transition: width 0.4s;
+  }
+  .exp-card:hover { background: var(--cream); }
+  .exp-card:hover::after { width: 100%; }
+
+  .exp-icon { font-size: 1.8rem; margin-bottom: 1.2rem; display: block; }
+
+  .exp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  .exp-desc { font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+
+  /* EXPERIENCE */
+  .experience { background: var(--cream); }
+
+  .timeline { position: relative; padding-right: 2rem; }
+  html[lang="ar"] .timeline { padding-right: 0; padding-left: 2rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+  html[lang="ar"] .timeline::before { right: auto; left: 0; }
+
+  .timeline-item {
+    position: relative;
+    padding-right: 3rem;
+    padding-bottom: 3rem;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.6s;
+  }
+  html[lang="ar"] .timeline-item { padding-right: 0; padding-left: 3rem; transform: translateX(-20px); }
+  .timeline-item.visible { opacity: 1; transform: translateX(0) !important; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -5px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--rust);
+    border: 2px solid var(--cream);
+  }
+  html[lang="ar"] .timeline-item::before { right: auto; left: -5px; }
+
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-org {
+    font-size: 0.85rem;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .timeline-desc { font-size: 0.9rem; line-height: 1.8; color: var(--muted); }
+
+  /* PUBLICATIONS */
+  .pub-card {
+    border: 1px solid var(--line);
+    padding: 2rem 2.5rem;
+    margin-bottom: 1px;
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    transition: background 0.3s;
+  }
+  .pub-card:hover { background: var(--cream); }
+
+  .pub-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--line);
+    line-height: 1;
+  }
+
+  .pub-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .pub-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .pub-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--rust);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 2px;
+    white-space: nowrap;
+  }
+
+  /* CERTIFICATIONS */
+  .certs { background: var(--ink); }
+  .certs .section-title { color: var(--paper); }
+  .certs .section-num { color: var(--gold); }
+  .certs .section-line { background: rgba(255,255,255,0.1); }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .cert-item { background: #161616; padding: 2rem 1.5rem; text-align: center; transition: background 0.3s; }
+  .cert-item:hover { background: #1e1e1e; }
+
+  .cert-badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .cert-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    transition: background 0.3s;
+    font-size: 0.9rem;
+  }
+  .contact-link:last-child { border-bottom: none; }
+  .contact-link:hover { background: var(--cream); }
+
+  .contact-link-icon { font-size: 1rem; width: 24px; text-align: center; flex-shrink: 0; }
+
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    min-width: 80px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 2rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--paper);
+    opacity: 0.5;
+    font-size: 0.9rem;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--paper); }
+  ::-webkit-scrollbar-thumb { background: var(--rust); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-center { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 7rem 2rem 3rem !important; }
+    .hero-right { display: none; }
+    section { padding: 4rem 2rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr 1fr; }
+    footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
 </head>
 <body>
 
-<div class="cv-container">
-    <div class="header">
-        <h1>MA'MON ALSA'OUDI</h1>
-        <div class="contact-info">
-            <span>Amman, Jordan</span> | <span>+962 799146795</span><br>
-            <span>mam87soudi@gmail.com</span> | <span>linkedin.com/in/mamonalsaudi</span>
+<nav>
+  <div class="nav-logo">Ma'mon Al-Sa'oudi</div>
+  <ul class="nav-center">
+    <li><a href="#about"><span data-inline="en">About</span><span data-inline="ar">نبذة</span></a></li>
+    <li><a href="#expertise"><span data-inline="en">Expertise</span><span data-inline="ar">التخصص</span></a></li>
+    <li><a href="#experience"><span data-inline="en">Experience</span><span data-inline="ar">الخبرة</span></a></li>
+    <li><a href="#publications"><span data-inline="en">Publications</span><span data-inline="ar">الأبحاث</span></a></li>
+    <li><a href="#contact"><span data-inline="en">Contact</span><span data-inline="ar">التواصل</span></a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">
+    <span data-inline="en">🌐 العربية</span>
+    <span data-inline="ar">🌐 English</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <span class="hero-tag">Histopathology · Laboratory Medicine · Accreditation</span>
+    <h1 class="hero-name">Ma'mon<br><em>Al-Sa'oudi</em></h1>
+    <p class="hero-title">
+      <span data-lang="en">MSc Medical Laboratory Analysis<br>Histopathology Lab Supervisor · Jordan University Hospital</span>
+      <span data-lang="ar">ماجستير تحليل المختبرات الطبية<br>مشرف مختبر الهيستوباثولوجيا · مستشفى الجامعة الأردنية</span>
+    </p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">
+      <span data-lang="en">Over 15 years of expertise in histopathology, laboratory accreditation, and quality assurance. Certified CAP Inspection Team Member and HCAC Medical Laboratory Surveyor based in Amman, Jordan.</span>
+      <span data-lang="ar">أكثر من 15 عاماً من الخبرة في علم الأنسجة المرضية، والاعتماد المختبري، وضمان الجودة. مُقيِّم معتمد لدى HCAC وعضو فريق تفتيش CAP من عمّان، الأردن.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">
+        <span data-inline="en">View Experience</span>
+        <span data-inline="ar">الخبرات المهنية</span>
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span data-inline="en">Get In Touch</span>
+        <span data-inline="ar">تواصل معي</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="hero-rect-1"></div>
+      <div class="hero-rect-2"></div>
+      <div class="hero-microscope">
+        <div class="hero-micro-icon">🔬</div>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <span class="stat-num">15+</span>
+            <span class="stat-label"><span data-inline="en">Years Exp.</span><span data-inline="ar">سنوات خبرة</span></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">2</span>
+            <span class="stat-label"><span data-inline="en">Active Roles</span><span data-inline="ar">منصبان نشطان</span></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">CAP</span>
+            <span class="stat-label"><span data-inline="en">Certified</span><span data-inline="ar">معتمد</span></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">JUH</span>
+            <span class="stat-label"><span data-inline="en">Jordan Univ.</span><span data-inline="ar">جامعة الأردن</span></span>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <h2>Professional Summary</h2>
-    <p>Highly accomplished Medical Laboratory Supervisor with over 13 years of experience in Histopathology, Hematology, and Quality Management. Licensed Medical Laboratory Manager (MSc) expert in CAP, JCIA, and HCAC accreditation standards.</p>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-header">
+    <span class="section-num">01 —</span>
+    <h2 class="section-title"><span data-inline="en">About</span><span data-inline="ar">نبذة</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <div data-lang="en">
+        <p>A <strong>Histopathology & Medical Laboratory specialist</strong> with over 15 years of experience bridging clinical practice and laboratory accreditation across Jordan.</p>
+        <p>Currently serving as <strong>Histopathology Laboratory Supervisor at Jordan University Hospital</strong> and <strong>Medical Laboratory Surveyor at HCAC</strong>. Active site team member in the Boehringer Ingelheim clinical trial (Survodutide) with Labcorp as the central laboratory.</p>
+        <p>Pioneered the <strong>first Hologic ThinPrep system in Jordan</strong> and holds a peer-reviewed publication on androgen receptor expression in bladder cancer.</p>
+      </div>
+      <div data-lang="ar">
+        <p>متخصص في <strong>علم الأنسجة المرضية والمختبرات الطبية</strong> بخبرة تمتد لأكثر من 15 عاماً، أجمع بين الممارسة السريرية والاعتماد المختبري.</p>
+        <p>أشغل حالياً منصب <strong>مشرف مختبر الهيستوباثولوجيا في مستشفى الجامعة الأردنية</strong>، ومُقيِّم لدى <strong>HCAC</strong>، وعضو فريق موقعي في تجربة Survodutide السريرية مع Labcorp.</p>
+        <p>أسهمت في تطبيق <strong>أول نظام ThinPrep في الأردن</strong>، وأملك بحثاً منشوراً حول التعبير عن مستقبل الأندروجين في سرطان المثانة.</p>
+      </div>
+    </div>
+    <div class="about-details">
+      <div class="detail-row">
+        <div class="detail-key"><span data-inline="en">Location</span><span data-inline="ar">الموقع</span></div>
+        <div class="detail-val">Amman, Jordan 🇯🇴</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-key"><span data-inline="en">Education</span><span data-inline="ar">التعليم</span></div>
+        <div class="detail-val">MSc Medical Laboratory Analysis — Al-Balqa Applied University</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-key">BSc</div>
+        <div class="detail-val">University of Jordan</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-key"><span data-inline="en">Languages</span><span data-inline="ar">اللغات</span></div>
+        <div class="detail-val">العربية · English</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-key"><span data-inline="en">Certifications</span><span data-inline="ar">الشهادات</span></div>
+        <div class="detail-val">CAP Inspection Team Member · HCAC Surveyor</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-key"><span data-inline="en">Clinical Trial</span><span data-inline="ar">التجربة السريرية</span></div>
+        <div class="detail-val">Survodutide — Boehringer Ingelheim / Labcorp</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <h2>Professional Experience</h2>
-    
-    <div class="job-entry">
-        <div class="job-header">
-            <span class="title-span">Medical Laboratory Surveyor</span>
-            <span class="date-span">Jan 2024 - Present</span>
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header">
+    <span class="section-num">02 —</span>
+    <h2 class="section-title"><span data-inline="en">Areas of Expertise</span><span data-inline="ar">مجالات التخصص</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="expertise-grid">
+    <div class="exp-card">
+      <span class="exp-icon">🔬</span>
+      <h3 class="exp-title">Histopathology</h3>
+      <p class="exp-desc">
+        <span data-lang="en">Deep expertise in histochemical staining techniques, PAS protocols, and ThinPrep cytology — first deployment of this system in Jordan.</span>
+        <span data-lang="ar">خبرة عميقة في تقنيات التلوين الهيستوكيميائي، بروتوكولات PAS، ونظام ThinPrep — أول تطبيق له في الأردن.</span>
+      </p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-icon">✅</span>
+      <h3 class="exp-title">Lab Accreditation</h3>
+      <p class="exp-desc">
+        <span data-lang="en">Certified HCAC surveyor and CAP inspection team member with experience in JCI, JFDA, and international accreditation standards.</span>
+        <span data-lang="ar">مُقيِّم معتمد لدى HCAC وعضو فريق تفتيش CAP، مع خبرة في معايير JCI وJFDA والاعتماد الدولي.</span>
+      </p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-icon">📊</span>
+      <h3 class="exp-title">Quality Management</h3>
+      <p class="exp-desc">
+        <span data-lang="en">Development of laboratory quality assurance systems, continuous improvement management, and Lean projects in clinical environments.</span>
+        <span data-lang="ar">تطوير أنظمة ضمان الجودة المختبرية، وإدارة التحسين المستمر، ومشاريع الـ Lean في المختبرات السريرية.</span>
+      </p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-icon">🧪</span>
+      <h3 class="exp-title">Clinical Trials</h3>
+      <p class="exp-desc">
+        <span data-lang="en">Active site team member in international clinical trials with Boehringer Ingelheim, coordinating with Labcorp under GCP standards.</span>
+        <span data-lang="ar">عضو فريق موقعي في تجارب Boehringer Ingelheim الدولية بالتنسيق مع Labcorp وفق معايير GCP.</span>
+      </p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-icon">🎓</span>
+      <h3 class="exp-title">Education & Training</h3>
+      <p class="exp-desc">
+        <span data-lang="en">Development and delivery of training materials on medical laboratory professional ethics and laboratory workflow protocols.</span>
+        <span data-lang="ar">تطوير وتقديم مواد تدريبية في أخلاقيات المهن الطبية المختبرية وبروتوكولات العمل في المختبرات.</span>
+      </p>
+    </div>
+    <div class="exp-card">
+      <span class="exp-icon">🩺</span>
+      <h3 class="exp-title">Oncology Research</h3>
+      <p class="exp-desc">
+        <span data-lang="en">Peer-reviewed publications on receptor expression in tumors, with a focus on bladder cancer and oncology biology.</span>
+        <span data-lang="ar">بحوث منشورة في مجلات محكّمة حول التعبير عن المستقبلات في الأورام، مع اهتمام بسرطان المثانة وبيولوجيا الأورام.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-header">
+    <span class="section-num">03 —</span>
+    <h2 class="section-title"><span data-inline="en">Experience</span><span data-inline="ar">الخبرة المهنية</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item visible">
+      <div class="timeline-date">2024 — Present</div>
+      <div class="timeline-role"><span data-inline="en">Medical Laboratory Surveyor</span><span data-inline="ar">مُقيِّم مختبرات طبية</span></div>
+      <div class="timeline-org">Healthcare Accreditation Council — HCAC · Amman, Jordan</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Evaluating medical laboratories against international accreditation standards and providing improvement recommendations to healthcare facilities across Jordan.</span>
+        <span data-lang="ar">تقييم المختبرات الطبية وفق معايير الاعتماد الدولية، وتقديم توصيات التحسين لمرافق الرعاية الصحية في الأردن.</span>
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2010 — Present</div>
+      <div class="timeline-role"><span data-inline="en">Histopathology Laboratory Supervisor</span><span data-inline="ar">مشرف مختبر الهيستوباثولوجيا</span></div>
+      <div class="timeline-org">Jordan University Hospital · Amman, Jordan</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Supervising the histopathology laboratory, managing quality systems, and leading the transition to the Hologic ThinPrep system — the first in Jordan.</span>
+        <span data-lang="ar">الإشراف على مختبر الهيستوباثولوجيا، إدارة الجودة، وقيادة الانتقال إلى نظام Hologic ThinPrep — أول تطبيق من نوعه في الأردن.</span>
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Active</div>
+      <div class="timeline-role"><span data-inline="en">Site Team Member — Clinical Trial</span><span data-inline="ar">عضو الفريق الموقعي — تجربة سريرية</span></div>
+      <div class="timeline-org">Boehringer Ingelheim · Protocol 1404-0064 (Survodutide)</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Participating in the international clinical trial coordinating with Labcorp as the central laboratory, implementing protocols under GCP standards.</span>
+        <span data-lang="ar">المشاركة في التجربة السريرية الدولية بالتنسيق مع Labcorp كمختبر مركزي وفق معايير GCP.</span>
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Certified</div>
+      <div class="timeline-role"><span data-inline="en">CAP Inspection Team Member</span><span data-inline="ar">عضو فريق تفتيش CAP</span></div>
+      <div class="timeline-org">College of American Pathologists — CAP</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Participating in international inspection teams under CAP's laboratory accreditation program, evaluating laboratories against American quality standards.</span>
+        <span data-lang="ar">المشاركة في فرق التفتيش الدولية لبرنامج اعتماد المختبرات التابع لـ CAP، وتقييم المختبرات وفق معايير الجودة الأمريكية.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header">
+    <span class="section-num">04 —</span>
+    <h2 class="section-title"><span data-inline="en">Publications</span><span data-inline="ar">الأبحاث المنشورة</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="pub-card">
+    <div class="pub-num">01</div>
+    <div>
+      <div class="pub-title">
+        <span data-inline="en">Androgen Receptor Expression in Bladder Cancer</span>
+        <span data-inline="ar">التعبير عن مستقبل الأندروجين في سرطان المثانة</span>
+      </div>
+      <div class="pub-meta">International Journal of Surgery Oncology · Peer-Reviewed</div>
+    </div>
+    <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" class="pub-link">
+      <span data-inline="en">View →</span><span data-inline="ar">عرض →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs" id="certifications">
+  <div class="section-header">
+    <span class="section-num">05 —</span>
+    <h2 class="section-title"><span data-inline="en">Certifications</span><span data-inline="ar">الشهادات والانتماءات</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-item">
+      <span class="cert-badge">CAP</span>
+      <span class="cert-name"><span data-inline="en">Inspection Team Member<br>College of American Pathologists</span><span data-inline="ar">عضو فريق تفتيش<br>كلية الباثولوجيين الأمريكيين</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">HCAC</span>
+      <span class="cert-name"><span data-inline="en">Medical Laboratory Surveyor<br>Healthcare Accreditation Council</span><span data-inline="ar">مُقيِّم مختبرات طبية<br>مجلس الاعتماد الصحي</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">JCI</span>
+      <span class="cert-name"><span data-inline="en">Joint Commission International<br>Accreditation Standards</span><span data-inline="ar">اللجنة المشتركة الدولية<br>معايير الاعتماد</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">MSc</span>
+      <span class="cert-name"><span data-inline="en">Medical Laboratory Analysis<br>Al-Balqa Applied University</span><span data-inline="ar">تحليل المختبرات الطبية<br>جامعة البلقاء التطبيقية</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">06 —</span>
+    <h2 class="section-title"><span data-inline="en">Contact</span><span data-inline="ar">التواصل</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3><span data-inline="en">Let's Connect</span><span data-inline="ar">تواصل معي</span></h3>
+      <p>
+        <span data-lang="en">Open to research collaboration, laboratory accreditation consulting, and international projects in histopathology and medical laboratory science.</span>
+        <span data-lang="ar">مفتوح للتعاون البحثي، واستشارات الاعتماد المختبري، والمشاريع الدولية في مجال علم الأنسجة والمختبرات الطبية.</span>
+      </p>
+      <div class="contact-links">
+        <a href="mailto:mamonsoudi@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          <span class="contact-link-label">Email</span>
+          <span>mamonsoudi@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mamonalsaudi" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          <span class="contact-link-label">LinkedIn</span>
+          <span>linkedin.com/in/mamonalsaudi</span>
+        </a>
+        <a href="tel:+962799146795" class="contact-link">
+          <span class="contact-link-icon">📱</span>
+          <span class="contact-link-label">Mobile</span>
+          <span>+962 799 146 795</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-icon">📍</span>
+          <span class="contact-link-label"><span data-inline="en">Location</span><span data-inline="ar">الموقع</span></span>
+          <span>Amman, Jordan</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div style="border:1px solid var(--line);padding:3rem 2.5rem;background:var(--cream);">
+        <p data-lang="en" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;line-height:1.6;color:var(--ink);margin-bottom:1.5rem;">
+          "Excellence in laboratory medicine is not just about accuracy — it's about the lives behind every result."
+        </p>
+        <p data-lang="ar" style="font-family:'Cairo',sans-serif;font-size:1.3rem;font-weight:300;line-height:1.8;color:var(--ink);margin-bottom:1.5rem;">
+          "التميز في الطب المختبري لا يقتصر على الدقة فحسب — بل يتعلق بالأرواح التي تقف خلف كل نتيجة."
+        </p>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <div style="width:40px;height:1px;background:var(--rust);"></div>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Ma'mon Al-Sa'oudi</span>
         </div>
-        <div>Health Care Accreditation Council (HCAC) - Amman, Jordan</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="job-entry">
-        <div class="job-header">
-            <span class="title-span">Histopathology Laboratory Supervisor</span>
-            <span class="date-span">Sep 2020 - Present</span>
-        </div>
-        <div>Jordan University Hospital - Amman, Jordan</div>
-    </div>
+<footer>
+  <div class="footer-name">Ma'mon Al-Sa'oudi</div>
+  <div class="footer-copy">© 2025 · Amman, Jordan · Histopathology Specialist</div>
+</footer>
 
-    <div class="job-entry">
-        <div class="job-header">
-            <span class="title-span">Quality Control Officer</span>
-            <span class="date-span">Apr 2019 - Apr 2023</span>
-        </div>
-        <div>Jordan University Hospital - Amman, Jordan</div>
-    </div>
+<script>
+  function toggleLang() {
+    const html = document.documentElement;
+    const isAr = html.lang === 'ar';
+    html.lang = isAr ? 'en' : 'ar';
+    html.dir = isAr ? 'ltr' : 'rtl';
+    // Re-run timeline animations
+    document.querySelectorAll('.timeline-item').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => el.classList.add('visible'), 200);
+    });
+  }
 
-    <h2>Education & Certifications</h2>
-    <ul>
-        <li><span class="title-span">MSc in Medical Laboratory Analysis (Excellent)</span> Al-Balqa Applied University, 2018-2021</li>
-        <li><span class="title-span">BSc in Medical Laboratory Analysis</span> University of Jordan, 2005-2009</li>
-        <li>Licensed Medical Laboratory Manager (Jordan)</li>
-        <li>CAP Inspection Team Member Training</li>
-    </ul>
+  // Scroll timeline animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 150);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
 
-    <h2>Key Skills</h2>
-    <div class="skills-list">
-        <div>• Histopathology & Cytology</div>
-        <div>• Quality Assurance (JCIA, CAP, HCAC)</div>
-        <div>• Immunohistochemistry (IHC)</div>
-        <div>• Laboratory Risk Management</div>
-    </div>
-
-    <div class="qr-area">
-        <strong>Scan to connect on LinkedIn</strong><br>
-        <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://linkedin.com/in/mamonalsaudi" alt="LinkedIn QR Code">
-    </div>
-</div>
-
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+    });
+    document.querySelectorAll('.nav-center a').forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--rust)' : '';
+    });
+  });
+</script>
 </body>
 </html>
