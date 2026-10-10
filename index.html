@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ma'mon Al-Sa'oudi | Histopathology Specialist</title>
+<title>Ma'mon Al-Sa'oudi | Laboratory Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -573,6 +573,59 @@
     min-width: 80px;
   }
 
+  /* QR CODE */
+  .qr-card {
+    margin-top: 1.5rem;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .qr-code {
+    display: block;
+    width: 132px;
+    height: 132px;
+    flex-shrink: 0;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .qr-code svg { width: 100%; height: 100%; display: block; }
+  .qr-text { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .qr-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+  }
+  html[lang="ar"] .qr-title { font-family: 'Cairo', sans-serif; font-size: 1.05rem; }
+  .qr-url {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+  }
+  .qr-btn {
+    margin-top: 0.4rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--ink);
+    background: transparent;
+    cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    transition: all 0.25s;
+  }
+  .qr-btn:hover { background: var(--ink); color: var(--paper); }
+
+  @media print {
+    nav, .hero-cta, .qr-btn, .lang-btn { display: none !important; }
+    body::before { display: none; }
+    .timeline-item { opacity: 1 !important; transform: none !important; }
+  }
+
   /* FOOTER */
   footer {
     background: var(--ink);
@@ -613,6 +666,10 @@
     .hero-left { padding: 7rem 2rem 3rem !important; }
     .hero-right { display: none; }
     section { padding: 4rem 2rem; }
+    .section-title { font-size: 2rem; white-space: normal; }
+    .contact-grid > * { min-width: 0; }
+    .contact-link { gap: 0.8rem; padding: 1rem; }
+    .contact-link span:last-child { min-width: 0; overflow-wrap: anywhere; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     .expertise-grid { grid-template-columns: 1fr; }
     .cert-grid { grid-template-columns: 1fr 1fr; }
@@ -640,16 +697,16 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
-    <span class="hero-tag">Histopathology · Laboratory Medicine · Accreditation</span>
+    <span class="hero-tag">Laboratory Management · Quality &amp; Accreditation · Histopathology</span>
     <h1 class="hero-name">Ma'mon<br><em>Al-Sa'oudi</em></h1>
     <p class="hero-title">
-      <span data-lang="en">MSc Medical Laboratory Analysis<br>Histopathology Lab Supervisor · Jordan University Hospital</span>
-      <span data-lang="ar">ماجستير تحليل المختبرات الطبية<br>مشرف مختبر الهيستوباثولوجيا · مستشفى الجامعة الأردنية</span>
+      <span data-lang="en">Licensed Medical Laboratory Manager · MSc Medical Laboratory Analysis<br>Histopathology Lab Supervisor · Jordan University Hospital</span>
+      <span data-lang="ar">مدير مختبرات طبية مرخّص · ماجستير تحليل المختبرات الطبية<br>مشرف مختبر الهيستوباثولوجيا · مستشفى الجامعة الأردنية</span>
     </p>
     <div class="hero-divider"></div>
     <p class="hero-desc">
-      <span data-lang="en">Over 15 years of expertise in histopathology, laboratory accreditation, and quality assurance. Certified CAP Inspection Team Member and HCAC Medical Laboratory Surveyor based in Amman, Jordan.</span>
-      <span data-lang="ar">أكثر من 15 عاماً من الخبرة في علم الأنسجة المرضية، والاعتماد المختبري، وضمان الجودة. مُقيِّم معتمد لدى HCAC وعضو فريق تفتيش CAP من عمّان، الأردن.</span>
+      <span data-lang="en">17 years of experience in laboratory operations, histopathology, quality management and accreditation. HCAC Medical Laboratory Surveyor and former Chief Quality Officer of Jordan University Hospital laboratories, based in Amman, Jordan.</span>
+      <span data-lang="ar">17 عاماً من الخبرة في إدارة عمليات المختبر، وعلم الأنسجة المرضية، وإدارة الجودة والاعتماد. مُقيِّم مختبرات لدى HCAC، ورئيس الجودة السابق لمختبرات مستشفى الجامعة الأردنية، من عمّان، الأردن.</span>
     </p>
     <div class="hero-cta">
       <a href="#experience" class="btn-primary">
@@ -670,7 +727,7 @@
         <div class="hero-micro-icon">🔬</div>
         <div class="stat-grid">
           <div class="stat-item">
-            <span class="stat-num">15+</span>
+            <span class="stat-num">17</span>
             <span class="stat-label"><span data-inline="en">Years Exp.</span><span data-inline="ar">سنوات خبرة</span></span>
           </div>
           <div class="stat-item">
@@ -701,13 +758,13 @@
   <div class="about-grid">
     <div class="about-text">
       <div data-lang="en">
-        <p>A <strong>Histopathology & Medical Laboratory specialist</strong> with over 15 years of experience bridging clinical practice and laboratory accreditation across Jordan.</p>
-        <p>Currently serving as <strong>Histopathology Laboratory Supervisor at Jordan University Hospital</strong> and <strong>Medical Laboratory Surveyor at HCAC</strong>. Active site team member in the Boehringer Ingelheim clinical trial (Survodutide) with Labcorp as the central laboratory.</p>
+        <p>A <strong>Licensed Medical Laboratory Manager</strong> with 17 years of experience across laboratory operations, histopathology, cytology, quality management and accreditation in Jordan.</p>
+        <p>Currently serving as <strong>Histopathology Laboratory Supervisor at Jordan University Hospital</strong> and <strong>Medical Laboratory Surveyor at HCAC</strong>. Former <strong>Chief Quality Officer for the hospital's laboratories (2019–2022)</strong>, leading quality-system activities toward HCAC and JCIA accreditation. Active site team member in the Boehringer Ingelheim clinical trial (Survodutide) with Labcorp as the central laboratory.</p>
         <p>Pioneered the <strong>first Hologic ThinPrep system in Jordan</strong> and holds a peer-reviewed publication on androgen receptor expression in bladder cancer.</p>
       </div>
       <div data-lang="ar">
-        <p>متخصص في <strong>علم الأنسجة المرضية والمختبرات الطبية</strong> بخبرة تمتد لأكثر من 15 عاماً، أجمع بين الممارسة السريرية والاعتماد المختبري.</p>
-        <p>أشغل حالياً منصب <strong>مشرف مختبر الهيستوباثولوجيا في مستشفى الجامعة الأردنية</strong>، ومُقيِّم لدى <strong>HCAC</strong>، وعضو فريق موقعي في تجربة Survodutide السريرية مع Labcorp.</p>
+        <p><strong>مدير مختبرات طبية مرخّص</strong> بخبرة 17 عاماً في عمليات المختبر، وعلم الأنسجة والخلايا، وإدارة الجودة والاعتماد في الأردن.</p>
+        <p>أشغل حالياً منصب <strong>مشرف مختبر الهيستوباثولوجيا في مستشفى الجامعة الأردنية</strong>، ومُقيِّم لدى <strong>HCAC</strong>. شغلت منصب <strong>رئيس الجودة لمختبرات المستشفى (2019–2022)</strong> وقدت أنشطة نظام الجودة نحو اعتماد HCAC وJCIA. عضو فريق موقعي في تجربة Survodutide السريرية مع Labcorp.</p>
         <p>أسهمت في تطبيق <strong>أول نظام ThinPrep في الأردن</strong>، وأملك بحثاً منشوراً حول التعبير عن مستقبل الأندروجين في سرطان المثانة.</p>
       </div>
     </div>
@@ -718,11 +775,15 @@
       </div>
       <div class="detail-row">
         <div class="detail-key"><span data-inline="en">Education</span><span data-inline="ar">التعليم</span></div>
-        <div class="detail-val">MSc Medical Laboratory Analysis — Al-Balqa Applied University</div>
+        <div class="detail-val">MSc Medical Laboratory Analysis — Al-Balqa Applied University (2021, Excellent)</div>
       </div>
       <div class="detail-row">
         <div class="detail-key">BSc</div>
-        <div class="detail-val">University of Jordan</div>
+        <div class="detail-val">Medical Laboratory Analysis — University of Jordan (2009)</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-key"><span data-inline="en">License</span><span data-inline="ar">الترخيص</span></div>
+        <div class="detail-val">Licensed Medical Laboratory Manager — Ministry of Health, Jordan</div>
       </div>
       <div class="detail-row">
         <div class="detail-key"><span data-inline="en">Languages</span><span data-inline="ar">اللغات</span></div>
@@ -730,7 +791,7 @@
       </div>
       <div class="detail-row">
         <div class="detail-key"><span data-inline="en">Certifications</span><span data-inline="ar">الشهادات</span></div>
-        <div class="detail-val">CAP Inspection Team Member · HCAC Surveyor</div>
+        <div class="detail-val">CAP Inspection Team Member Training · HCAC Surveyor · OSH Technical Supervisor</div>
       </div>
       <div class="detail-row">
         <div class="detail-key"><span data-inline="en">Clinical Trial</span><span data-inline="ar">التجربة السريرية</span></div>
@@ -808,21 +869,48 @@
   </div>
   <div class="timeline">
     <div class="timeline-item visible">
-      <div class="timeline-date">2024 — Present</div>
+      <div class="timeline-date">Apr 2023 — Present</div>
       <div class="timeline-role"><span data-inline="en">Medical Laboratory Surveyor</span><span data-inline="ar">مُقيِّم مختبرات طبية</span></div>
       <div class="timeline-org">Healthcare Accreditation Council — HCAC · Amman, Jordan</div>
       <p class="timeline-desc">
-        <span data-lang="en">Evaluating medical laboratories against international accreditation standards and providing improvement recommendations to healthcare facilities across Jordan.</span>
-        <span data-lang="ar">تقييم المختبرات الطبية وفق معايير الاعتماد الدولية، وتقديم توصيات التحسين لمرافق الرعاية الصحية في الأردن.</span>
+        <span data-lang="en">Surveying medical laboratories against quality and accreditation requirements and identifying opportunities for quality improvement and operational efficiency.</span>
+        <span data-lang="ar">تقييم المختبرات الطبية وفق متطلبات الجودة والاعتماد، وتحديد فرص تحسين الجودة والكفاءة التشغيلية.</span>
       </p>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">2010 — Present</div>
+      <div class="timeline-date">Sep 2020 — Present</div>
       <div class="timeline-role"><span data-inline="en">Histopathology Laboratory Supervisor</span><span data-inline="ar">مشرف مختبر الهيستوباثولوجيا</span></div>
       <div class="timeline-org">Jordan University Hospital · Amman, Jordan</div>
       <p class="timeline-desc">
-        <span data-lang="en">Supervising the histopathology laboratory, managing quality systems, and leading the transition to the Hologic ThinPrep system — the first in Jordan.</span>
-        <span data-lang="ar">الإشراف على مختبر الهيستوباثولوجيا، إدارة الجودة، وقيادة الانتقال إلى نظام Hologic ThinPrep — أول تطبيق من نوعه في الأردن.</span>
+        <span data-lang="en">Supervising daily histopathology and cytology operations: tissue processing, embedding, microtomy, routine and special stains, and immunohistochemistry. Leading staff training, workflow improvement and equipment follow-up, and the transition to the Hologic ThinPrep system — the first in Jordan.</span>
+        <span data-lang="ar">الإشراف على العمليات اليومية لمختبر الأنسجة والخلايا: تحضير الأنسجة، والطمر، والتقطيع، والصبغات الروتينية والخاصة، والكيمياء المناعية النسيجية. قيادة تدريب الكوادر وتحسين سير العمل ومتابعة الأجهزة، والانتقال إلى نظام Hologic ThinPrep — الأول في الأردن.</span>
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2019 — 2022</div>
+      <div class="timeline-role"><span data-inline="en">Chief Quality Officer — Hospital Laboratories</span><span data-inline="ar">رئيس الجودة — مختبرات المستشفى</span></div>
+      <div class="timeline-org">Jordan University Hospital · Amman, Jordan</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Established and monitored laboratory quality-system activities with all section supervisors; coordinated compliance with HCAC and JCIA accreditation; maintained SOPs and quality documentation; followed up nonconformities and corrective actions.</span>
+        <span data-lang="ar">تأسيس ومتابعة أنشطة نظام الجودة مع مشرفي جميع الأقسام، وتنسيق الامتثال لمتطلبات اعتماد HCAC وJCIA، وإدارة الإجراءات القياسية ووثائق الجودة، ومتابعة حالات عدم المطابقة والإجراءات التصحيحية.</span>
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Nov 2013 — Jan 2024</div>
+      <div class="timeline-role"><span data-inline="en">Histopathology Laboratory Senior</span><span data-inline="ar">أخصائي أول مختبر الهيستوباثولوجيا</span></div>
+      <div class="timeline-org">Jordan University Hospital · Amman, Jordan</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Performed embedding, trimming and immunohistochemistry staining; prepared biopsy and cytology specimens; supported equipment maintenance and troubleshooting.</span>
+        <span data-lang="ar">تنفيذ الطمر والتشذيب وصبغات الكيمياء المناعية النسيجية، وتحضير عينات الخزعات والخلايا، ودعم صيانة الأجهزة وحل أعطالها.</span>
+      </p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Nov 2009 — Nov 2013</div>
+      <div class="timeline-role"><span data-inline="en">Medical Laboratory Technician</span><span data-inline="ar">فني مختبر طبي</span></div>
+      <div class="timeline-org">MedLabs Consultancy Group · Amman, Jordan</div>
+      <p class="timeline-desc">
+        <span data-lang="en">Laboratory testing in hematology, microbiology and clinical chemistry; phlebotomy and specimen handling.</span>
+        <span data-lang="ar">إجراء فحوصات أمراض الدم والأحياء الدقيقة والكيمياء السريرية، وسحب العينات والتعامل معها.</span>
       </p>
     </div>
     <div class="timeline-item">
@@ -892,6 +980,22 @@
       <span class="cert-badge">MSc</span>
       <span class="cert-name"><span data-inline="en">Medical Laboratory Analysis<br>Al-Balqa Applied University</span><span data-inline="ar">تحليل المختبرات الطبية<br>جامعة البلقاء التطبيقية</span></span>
     </div>
+    <div class="cert-item">
+      <span class="cert-badge">MOH</span>
+      <span class="cert-name"><span data-inline="en">Licensed Medical Laboratory Manager<br>Ministry of Health, Jordan</span><span data-inline="ar">مدير مختبرات طبية مرخّص<br>وزارة الصحة الأردنية</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">ISO</span>
+      <span class="cert-name"><span data-inline="en">ISO 15189:2022<br>Medical Laboratory Quality</span><span data-inline="ar">ISO 15189:2022<br>جودة المختبرات الطبية</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">OSH</span>
+      <span class="cert-name"><span data-inline="en">Occupational Safety<br>Technical Supervisor</span><span data-inline="ar">مشرف فني<br>للسلامة والصحة المهنية</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">JCIA</span>
+      <span class="cert-name"><span data-inline="en">Hospital Accreditation<br>Quality Lead 2019–2022</span><span data-inline="ar">اعتماد المستشفيات<br>قيادة الجودة 2019–2022</span></span>
+    </div>
   </div>
 </section>
 
@@ -945,16 +1049,43 @@
           <span style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">Ma'mon Al-Sa'oudi</span>
         </div>
       </div>
+      <div class="qr-card">
+        <a href="https://mam87.github.io/mamoncv/" class="qr-code" aria-label="QR code linking to this CV">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" shape-rendering="crispEdges"><rect width="33" height="33" fill="#ffffff"/><path stroke="#0d0d0d" d="M2 2.5h7m3 0h1m1 0h1m1 0h1m2 0h2m3 0h7m-29 1h1m5 0h1m3 0h5m4 0h1m2 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h3m3 0h3m1 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m4 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h5m3 0h2m1 0h1m2 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-19 1h1m4 0h4m-18 1h1m2 0h1m1 0h1m1 0h2m1 0h3m2 0h2m1 0h3m1 0h2m1 0h1m-27 1h3m4 0h1m2 0h4m3 0h2m3 0h4m1 0h2m-28 1h1m2 0h3m2 0h1m1 0h2m2 0h1m1 0h1m2 0h2m6 0h1m-29 1h3m1 0h2m1 0h2m4 0h1m2 0h2m3 0h1m1 0h3m1 0h2m-28 1h1m1 0h1m1 0h2m1 0h1m1 0h4m1 0h6m2 0h1m4 0h1m-27 1h3m3 0h3m1 0h6m4 0h1m1 0h1m1 0h1m1 0h1m-29 1h1m2 0h1m1 0h2m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m3 0h1m3 0h1m-29 1h3m2 0h1m2 0h4m2 0h4m2 0h1m2 0h1m1 0h1m1 0h2m-29 1h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h2m1 0h1m2 0h1m6 0h1m-28 1h2m6 0h2m2 0h1m5 0h1m3 0h3m1 0h1m1 0h1m-24 1h3m5 0h1m1 0h1m2 0h1m1 0h1m2 0h3m2 0h1m-22 1h1m1 0h6m2 0h2m1 0h1m3 0h2m1 0h2m-29 1h2m1 0h4m1 0h1m2 0h1m3 0h1m1 0h2m1 0h6m-18 1h2m1 0h6m1 0h3m3 0h1m1 0h3m-29 1h7m3 0h1m3 0h2m3 0h2m1 0h1m1 0h1m3 0h1m-29 1h1m5 0h1m2 0h1m1 0h1m1 0h2m2 0h4m3 0h2m2 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m3 0h2m3 0h1m1 0h6m3 0h1m-29 1h1m1 0h3m1 0h1m2 0h4m1 0h2m1 0h1m5 0h1m1 0h2m1 0h1m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h3m1 0h4m4 0h3m-29 1h1m5 0h1m1 0h1m1 0h4m3 0h1m2 0h1m2 0h1m3 0h2m-29 1h7m2 0h1m1 0h4m2 0h1m2 0h3m1 0h2m1 0h1"/></svg>
+        </a>
+        <div class="qr-text">
+          <span class="qr-title"><span data-inline="en">Scan to open this CV</span><span data-inline="ar">امسح الرمز لفتح السيرة الذاتية</span></span>
+          <span class="qr-url">mam87.github.io/mamoncv</span>
+          <button class="qr-btn" onclick="downloadQR()"><span data-inline="en">Download QR</span><span data-inline="ar">تحميل الرمز</span></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-name">Ma'mon Al-Sa'oudi</div>
-  <div class="footer-copy">© 2025 · Amman, Jordan · Histopathology Specialist</div>
+  <div class="footer-copy">© 2026 · Amman, Jordan · Laboratory Manager</div>
 </footer>
 
 <script>
+  function downloadQR() {
+    const svg = document.querySelector('.qr-code svg');
+    const img = new Image();
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 660;
+    img.onload = () => {
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(img, 0, 0, 660, 660);
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'Mamon-Alsaudi-CV-QR.png';
+      a.click();
+    };
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(svg));
+  }
+
   function toggleLang() {
     const html = document.documentElement;
     const isAr = html.lang === 'ar';
@@ -982,4 +1113,12 @@
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop 
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    document.querySelectorAll('.nav-center a').forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--rust)' : '';
+    });
+  });
+</script>
+</body>
+</html>
